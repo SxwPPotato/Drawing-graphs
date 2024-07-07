@@ -47,6 +47,8 @@ private slots:
     void show_graph(QVector<double> mins, QVector<double> maxs);
 
 
+signals:
+    void Data_ready(QVector<double> mins, QVector<double> maxs);
 
 private:
     Ui::MainWindow *ui;
@@ -58,6 +60,7 @@ private:
     QVector<double> mins, maxs;
 
     void ViewGraph(void);
+
 
     GraphicChart* graphClass;
     QChart* chart;
