@@ -67,3 +67,5 @@ void GraphicChart::UpdateGraph(QChart *chart)
 
 }
 
+
+

@@ -15,17 +15,12 @@ MainWindow::MainWindow(QWidget *parent)
     graphClass = new GraphicChart(FD);
 
     layout = new QGridLayout;
+    graph = new GraphicChart;
 
-
-    //ui->te_Result->setLayout(layout);
-    //layout->addWidget(chartView);
     chartView->show( );
 
-    connect(ui->pb_start, SIGNAL(Data_ready), this, SLOT(show_graph(mins, maxs)));
 
-    //show_graph(mins, maxs);
-
-
+    connect(this, SIGNAL(&Data_ready(mins,maxs)), this, SLOT(&show_graph(mins,maxs)));
 
 }
 
@@ -246,19 +241,18 @@ void MainWindow::on_pb_start_clicked()
 
                                                 DisplayResult(mins, maxs);
 
-                                                Data_ready(mins, maxs);
-
-                                                //show_graph(mins, maxs);
+                                                emit Data_ready(mins, maxs);
 
                                              };
+
 
     auto result = QtConcurrent::run(read)
                                .then(process)
                                .then(findMax);
 
 
-
 }
+
 
 void MainWindow::show_graph(QVector<double> mins, QVector<double> maxs){
     if(chart->series().isEmpty() == false){

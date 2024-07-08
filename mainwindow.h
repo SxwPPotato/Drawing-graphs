@@ -62,6 +62,7 @@ private:
     void ViewGraph(void);
 
 
+    GraphicChart* graph;
     GraphicChart* graphClass;
     QChart* chart;
     QChartView* chartView;
