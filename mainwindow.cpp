@@ -20,7 +20,9 @@ MainWindow::MainWindow(QWidget *parent)
     chartView->show( );
 
 
-    connect(this, SIGNAL(&Data_ready(mins,maxs)), this, SLOT(&show_graph(mins,maxs)));
+    connect(this, &MainWindow::Data_ready, this, [this]{
+        show_graph(mins,maxs);
+    });
 
 }
 
@@ -241,7 +243,7 @@ void MainWindow::on_pb_start_clicked()
 
                                                 DisplayResult(mins, maxs);
 
-                                                emit Data_ready(mins, maxs);
+                                                emit Data_ready();
 
                                              };
 

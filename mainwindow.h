@@ -48,7 +48,7 @@ private slots:
 
 
 signals:
-    void Data_ready(QVector<double> mins, QVector<double> maxs);
+    void Data_ready();
 
 private:
     Ui::MainWindow *ui;
